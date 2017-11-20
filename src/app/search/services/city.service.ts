@@ -3,6 +3,8 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import { environment } from './../../../environments/environment';
+
 @Injectable()
 export class CityService {
 
@@ -12,7 +14,7 @@ export class CityService {
 
   public searchCities(searchText: string): Observable<Array<string>> {
     console.log(searchText);
-    return this.http.post('http://localhost:3000/cities', searchText)
+    return this.http.post(environment.apiUrl + '/cities', searchText)
       .map(cities => cities.json());
   }
 

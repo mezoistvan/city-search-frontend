@@ -1,1 +1,1 @@
-web ng serve --prod -p $PORT
+web node server.js
