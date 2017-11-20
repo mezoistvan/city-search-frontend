@@ -1,25 +1,19 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
 
 @Directive({
   selector: '[shInput]'
 })
 export class InputDirective {
 
-  focus = false;
+  @Output() onInputValueChange: EventEmitter<string> = new EventEmitter();
 
-  @HostListener('focus')
-  onFocus() {
-    this.focus = true;
-  }
-
-  @HostListener('blur')
-  onBlur() {
-    this.focus = false;
-  }
+  constructor(
+    private el: ElementRef
+  ) {}
 
   @HostListener('input')
-  onInput(e) {
-    console.log(e);
+  onInput(): void {
+    this.onInputValueChange.emit(this.el.nativeElement.value);
   }
 
 }

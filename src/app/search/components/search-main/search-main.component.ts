@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+
+import { CityService } from '../../services/city.service';
 
 @Component({
   selector: 'cs-search-main',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchMainComponent implements OnInit {
 
-  constructor() { }
+  public searchText$: Subject<string> = new Subject<string>();
+
+  constructor(
+    private cityService: CityService
+  ) {}
 
   ngOnInit() {
+    this.searchText$
+      .debounceTime(300)
+      .subscribe(text =>
+        this.cityService.searchCities(text)
+          .subscribe(result => this.handleSearchResult(result))
+      );
+  }
+
+  onInputValueChange(event: string): void {
+    this.searchText$.next(event);
+  }
+
+  handleSearchResult(result: Array<string>): void {
+    console.log(result);
   }
 
 }

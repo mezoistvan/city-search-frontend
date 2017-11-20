@@ -1,13 +1,16 @@
-<p>
-  search-main works!
-</p>
+<div class="c-search-main">
 
-<sh-form-field>
-  <input type="text" shInput>
-  <sh-typeahead>
-    <sh-list-element>
-      This is a list element
-    </sh-list-element>
-    <sh-spinner></sh-spinner>
-  </sh-typeahead>
-</sh-form-field>
+  <div class="c-search-main--title">
+    City Search
+  </div>
+
+  <sh-form-field>
+    <input type="text" shInput (onInputValueChange)="onInputValueChange($event)">
+    <sh-typeahead>
+      <sh-list-element>
+        This is a list element
+      </sh-list-element>
+      <sh-spinner></sh-spinner>
+    </sh-typeahead>
+  </sh-form-field>
+</div>
