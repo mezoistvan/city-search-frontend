@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'sh-typeahead',
   templateUrl: './typeahead.component.html',
-  styleUrls: ['./typeahead.component.scss']
+  styleUrls: ['./typeahead.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
+  exportAs: 'shTypeahead'
 })
-export class TypeaheadComponent implements OnInit {
+export class TypeaheadComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input() isActive = false;
 
 }

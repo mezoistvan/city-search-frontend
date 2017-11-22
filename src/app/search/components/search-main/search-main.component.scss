@@ -4,9 +4,27 @@
     justify-content: center;
     flex-direction: column;
     padding: 0px 10%;
+    height: 100%;
 
-    .c-search-main--title {
+    .c-search-main__title {
         font-size: 40px;
         color: turquoise;
+    }
+
+    .c-search-main__input {
+        .valami {
+            border: 3px solid red;
+            width: 500px;
+            height: 30px;
+            font-size: 20px;
+            box-shadow: 4px 10px 0 #828181;
+        }
+    }
+
+    sh-backdrop {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
     }
 }

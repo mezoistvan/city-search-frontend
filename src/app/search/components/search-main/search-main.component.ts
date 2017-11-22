@@ -12,6 +12,8 @@ import { CityService } from '../../services/city.service';
 export class SearchMainComponent implements OnInit {
 
   public searchText$: Subject<string> = new Subject<string>();
+  public searchResults: Array<string> = [];
+  public isFocused = false;
 
   constructor(
     private cityService: CityService
@@ -31,7 +33,12 @@ export class SearchMainComponent implements OnInit {
   }
 
   handleSearchResult(result: Array<string>): void {
-    console.log(result);
+    this.searchResults = [
+      ...result
+    ];
   }
 
+  onFocusChange(isFocused: boolean): void {
+    this.isFocused = isFocused;
+  }
 }

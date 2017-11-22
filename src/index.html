@@ -7,8 +7,58 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    html, body {
+      margin: 0px;
+      height: 100%;
+    }
+    .pre-app-bg {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(180deg, #076596, #ffb468, #69301e);
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .pre-app-title {
+      margin-top: 200px;
+      height: 100px;
+      width: 500px;
+    }
+    .pre-app-search {
+      margin-top: 100px;
+      height: 50px;
+      width: 300px;
+    }
+    @keyframes placeHolderShimmer{
+      0%{
+          background-position: -468px 0
+      }
+      100%{
+          background-position: 468px 0
+      }
+    }
+    .placeholder {
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      background: #f6f7f8;
+      background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+      background-size: 800px 104px;
+      position: relative;
+    }
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+  <app-root>
+    <div class="pre-app-bg">
+      <div class="pre-app-title">
+        City Search
+      </div>
+      <div class="pre-app-search placeholder"></div>
+    </div>
+  </app-root>
 </body>
 </html>

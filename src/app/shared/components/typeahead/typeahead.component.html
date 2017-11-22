@@ -1,4 +1,3 @@
-<p>
-  typeahead works!
-</p>
-<ng-content></ng-content>
+<div class="c-typeahead__content" [ngClass]="{'active': isActive, 'inactive': !isActive}">
+    <ng-content></ng-content>
+</div>
