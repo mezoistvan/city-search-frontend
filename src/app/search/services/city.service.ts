@@ -13,7 +13,6 @@ export class CityService {
   ) {}
 
   public searchCities(searchText: string): Observable<Array<string>> {
-    console.log(searchText);
     return this.http.post(environment.apiUrl + '/cities', searchText)
       .map(cities => cities.json());
   }

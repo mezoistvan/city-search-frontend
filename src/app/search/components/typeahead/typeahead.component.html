@@ -9,14 +9,18 @@
     (isFocused)="onFocusChange($event)">
   <sh-spinner
     class="c-typeahead__spinner"
-    *ngIf="isSearchActive() && areSuggestionsVisible">
+    *ngIf="isSearchActive() && isFocused">
   </sh-spinner>
   <sh-typeahead
-    [isVisible]="areSuggestionsVisible">
+    [isVisible]="isFocused">
     <sh-list-element
       *ngFor="let searchResult of searchResults"
       (mousedown)="setValue(searchResult)">
       {{ searchResult }}
     </sh-list-element>
+  <sh-list-element
+    *ngIf="!searchResults.length">
+    No results found.
+  </sh-list-element>
   </sh-typeahead>
 </sh-form-field>

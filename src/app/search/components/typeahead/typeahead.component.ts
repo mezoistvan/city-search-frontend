@@ -56,10 +56,6 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
     return this.searchSubscription$ && !this.searchSubscription$.closed;
   }
 
-  get areSuggestionsVisible() {
-    return this.isFocused && (this.searchResults.length || this.isSearchActive());
-  }
-
   ngOnDestroy() {
     if (this.searchSubscription$) {
       this.searchSubscription$.unsubscribe();
