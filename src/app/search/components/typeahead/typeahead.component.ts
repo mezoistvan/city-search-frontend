@@ -17,7 +17,7 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   public searchSubscription$: Subscription;
   public inputValue: string;
 
-  private isFocused = false;
+  public isFocused = false;
 
   constructor(
     private cityService: CityService
