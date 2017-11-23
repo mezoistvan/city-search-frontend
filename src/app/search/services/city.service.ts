@@ -12,7 +12,7 @@ export class CityService {
     private http: Http
   ) {}
 
-  public searchCities(searchText: string): Observable<Array<string>> {
+  public searchCities(searchText: string): Observable<Array<Array<string>>> {
     return this.http.post(environment.apiUrl + '/cities', searchText)
       .map(cities => cities.json());
   }

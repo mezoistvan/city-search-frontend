@@ -1,9 +1,17 @@
-.c-list-element__content {
+@import '../../../../assets/stylesheets/colors';
+
+.c-list-element__wrapper {
     cursor: pointer;
     padding: 5px;
-    background-color: white;
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+
+    .c-list-element__emphasis {
+        font-weight: bold;
+    }
 
     &:hover {
-        background-color: #c2dfeb;
+        background-color: $extra-light-blue;
     }
 }

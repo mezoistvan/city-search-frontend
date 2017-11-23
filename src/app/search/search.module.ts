@@ -1,8 +1,8 @@
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TypeaheadComponent } from './components/typeahead/typeahead.component';
+import { SearchTypeaheadComponent } from './components/typeahead/typeahead.component';
 import { SearchMainComponent } from './components/search-main/search-main.component';
 import { SharedModule } from './../shared/shared.module';
 import { CityService } from './services/city.service';
@@ -11,10 +11,10 @@ import { CityService } from './services/city.service';
   imports: [
     CommonModule,
     SharedModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   declarations: [
-    TypeaheadComponent,
+    SearchTypeaheadComponent,
     SearchMainComponent
   ],
   providers: [

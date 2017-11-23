@@ -1,3 +1,8 @@
-<div class="c-list-element__content">
-  <ng-content></ng-content>
+<div class="c-list-element__wrapper">
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <div class="c-list-element__emphasis">
+    <ng-content select="[emphasis]"></ng-content>
+  </div>
 </div>

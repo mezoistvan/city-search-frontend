@@ -1,4 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, ComponentFixtureAutoDetect } from '@angular/core/testing';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { TypeaheadComponent } from './typeahead.component';
 
@@ -9,8 +11,7 @@ describe('TypeaheadComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TypeaheadComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +20,9 @@ describe('TypeaheadComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('content should should not be visible by default', () => {
+    const content = fixture.debugElement.query(By.css('.c-typeahead__content'));
+    expect(content).toEqual(null);
+    expect(component.isVisible).toEqual(false);
   });
 });

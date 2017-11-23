@@ -1,13 +1,15 @@
+@import '../../../../assets/stylesheets/colors';
+
 .c-search-main {
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 100%;
     transition: background-color 3s;
-    background-color: rgba(0, 84, 126, 1);
+    background-color: $solid-blue;
 
     &.after-load {
-        background-color: rgba(0, 84, 126, 0.7);
+        background-color: $transparent-blue;
     }
 
     .c-search-main_background {
@@ -25,7 +27,7 @@
         font-family: 'Poppins', sans-serif;
         font-size: 40px;
         text-align: center;
-        color: white;
+        color: $white;
     }
 
     .c-search-main__typeahead {
@@ -33,4 +35,15 @@
         height: 50px;
         width: 500px;
     }
+
+    @media screen and (max-width: 500px) {
+        .c-search-main__title {
+            margin-top: 150px;
+            width: 75%;
+        }
+        .c-search-main__typeahead {
+            margin-top: 75px;
+            width: 75%;
+        }
+      }
 }

@@ -1,4 +1,12 @@
 .c-form-field__content {
+    font-family: 'Roboto', sans-serif;    
     position: relative;
     width: 100%;
+
+    /deep/ input {
+        box-sizing: border-box;
+        width: 100%;
+        height: 50px;
+        font-size: 30px;
+    }
 }

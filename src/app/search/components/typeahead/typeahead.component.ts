@@ -1,22 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
+import * as Immutable from 'immutable';
 
 import { CityService } from '../../services/city.service';
+
 
 @Component({
   selector: 'cs-typeahead',
   templateUrl: './typeahead.component.html',
   styleUrls: ['./typeahead.component.scss']
 })
-export class TypeaheadComponent implements OnInit, OnDestroy {
+export class SearchTypeaheadComponent implements OnInit, OnDestroy {
 
-  public searchText$: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  public searchResults: Array<string> = [];
+  public searchResults: Immutable.List<Array<string>> = Immutable.fromJS([]);
   public searchSubscription$: Subscription;
-  public inputValue: string;
-
+  public inputValue = new FormControl();
   public isFocused = false;
 
   constructor(
@@ -24,28 +25,32 @@ export class TypeaheadComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.searchText$
+    this.inputValue.valueChanges
       .debounceTime(500)
-      .subscribe(text =>
+      .subscribe(text => {
+        // if there is a request already in progress, discard it
+        if (this.searchSubscription$) {
+          this.searchSubscription$.unsubscribe();
+        }
+
         this.searchSubscription$ = this.cityService.searchCities(text)
-          .subscribe(result => this.handleSearchResult(result))
-      );
+          .subscribe(result => {
+            this.handleSearchResult(result);
+
+            // after a successful request, discard the subscription
+            this.searchSubscription$.unsubscribe();
+          });
+
+        return this.searchSubscription$;
+      });
   }
 
-  handleSearchResult(result: Array<string>): void {
-    this.searchResults = [
-      ...result
-    ];
-    this.searchSubscription$.unsubscribe();
+  handleSearchResult(result: Array<Array<string>>): void {
+    this.searchResults = Immutable.fromJS(result);
   }
 
-  onInputValueChange(event: string): void {
-    this.searchText$.next(event);
-  }
-
-  setValue(searchResult: string): void {
-    this.inputValue = searchResult;
-    this.searchText$.next(searchResult);
+  setValue(searchResult: Array<string>): void {
+    this.inputValue.setValue(searchResult);
   }
 
   onFocusChange(isFocused: boolean): void {

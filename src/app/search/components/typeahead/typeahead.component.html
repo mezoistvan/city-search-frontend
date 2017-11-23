@@ -3,8 +3,7 @@
     class="c-typeahead__input"
     type="text"
     placeholder="Start typing..."
-    [(ngModel)]="inputValue"
-    (ngModelChange)="onInputValueChange($event)"
+    [formControl]="inputValue"
     shInput
     (isFocused)="onFocusChange($event)">
   <sh-spinner
@@ -13,14 +12,18 @@
   </sh-spinner>
   <sh-typeahead
     [isVisible]="isFocused">
+
     <sh-list-element
       *ngFor="let searchResult of searchResults"
-      (mousedown)="setValue(searchResult)">
-      {{ searchResult }}
+      (mousedown)="setValue(searchResult.get(0))">
+      {{ searchResult.get(0) }}
+      <span emphasis>{{ searchResult.get(1) }}</span>
     </sh-list-element>
-  <sh-list-element
-    *ngIf="!searchResults.length">
-    No results found.
-  </sh-list-element>
+
+    <sh-list-element
+      *ngIf="!searchResults.size">
+      No results found.
+    </sh-list-element>
+
   </sh-typeahead>
 </sh-form-field>
