@@ -1,13 +1,22 @@
-<p>
-  This is the wrapper of the typeahead component. Might not even need this one.
-</p>
-
-<sh-form-field>
-  <input type="text" shInput>
-  <sh-typeahead>
-    <sh-list-element>
-      This is a list element
+<sh-form-field class="c-typeahead__wrapper">
+  <input
+    class="c-typeahead__input"
+    type="text"
+    placeholder="Start typing..."
+    [(ngModel)]="inputValue"
+    (ngModelChange)="onInputValueChange($event)"
+    shInput
+    (isFocused)="onFocusChange($event)">
+  <sh-spinner
+    class="c-typeahead__spinner"
+    *ngIf="isSearchActive() && areSuggestionsVisible">
+  </sh-spinner>
+  <sh-typeahead
+    [isVisible]="areSuggestionsVisible">
+    <sh-list-element
+      *ngFor="let searchResult of searchResults"
+      (mousedown)="setValue(searchResult)">
+      {{ searchResult }}
     </sh-list-element>
-    <sh-spinner></sh-spinner>
   </sh-typeahead>
 </sh-form-field>

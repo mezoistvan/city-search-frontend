@@ -13,13 +13,6 @@ export class InputDirective {
     private el: ElementRef
   ) {}
 
-  @HostListener('keyup')
-  onKeyUp(): void {
-    if (this.el.nativeElement.value) {
-      this.onInputValueChange.emit(this.el.nativeElement.value);
-    }
-  }
-
   @HostListener('focus')
   onFocus(): void {
     this.isFocused.emit(true);

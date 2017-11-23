@@ -1,18 +1,9 @@
 .c-typeahead__content {
-    position: absolute;
     border: 1px solid black;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     max-height: 300px;
     width: 100%;
     max-width: none;
     margin-top: 10px;
-
-    &.active {
-        visibility: visible;
-    }
-
-    &.inactive {
-        visibility: hidden;
-    }
-
 }

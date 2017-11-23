@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
-
-import { CityService } from '../../services/city.service';
 
 @Component({
   selector: 'cs-search-main',
@@ -11,34 +7,12 @@ import { CityService } from '../../services/city.service';
 })
 export class SearchMainComponent implements OnInit {
 
-  public searchText$: Subject<string> = new Subject<string>();
-  public searchResults: Array<string> = [];
-  public isFocused = false;
-
-  constructor(
-    private cityService: CityService
-  ) {}
+  public isLoaded = false;
 
   ngOnInit() {
-    this.searchText$
-      .debounceTime(300)
-      .subscribe(text =>
-        this.cityService.searchCities(text)
-          .subscribe(result => this.handleSearchResult(result))
-      );
+    setTimeout(() => {
+      this.isLoaded = true;
+    }, 0);
   }
 
-  onInputValueChange(event: string): void {
-    this.searchText$.next(event);
-  }
-
-  handleSearchResult(result: Array<string>): void {
-    this.searchResults = [
-      ...result
-    ];
-  }
-
-  onFocusChange(isFocused: boolean): void {
-    this.isFocused = isFocused;
-  }
 }

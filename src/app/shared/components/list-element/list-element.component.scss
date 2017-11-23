@@ -1,7 +1,9 @@
 .c-list-element__content {
+    cursor: pointer;
+    padding: 5px;
     background-color: white;
 
     &:hover {
-        background-color: blue;
+        background-color: #c2dfeb;
     }
 }

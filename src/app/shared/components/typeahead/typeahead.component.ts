@@ -4,11 +4,11 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
   selector: 'sh-typeahead',
   templateUrl: './typeahead.component.html',
   styleUrls: ['./typeahead.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   exportAs: 'shTypeahead'
 })
 export class TypeaheadComponent {
 
-  @Input() isActive = false;
+  @Input() isVisible = false;
 
 }

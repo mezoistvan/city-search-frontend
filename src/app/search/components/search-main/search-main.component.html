@@ -1,26 +1,10 @@
-<div class="c-search-main">
+<div class="c-search-main" [ngClass]="{'after-load': isLoaded}">
 
-  <sh-backdrop [isActive]="isFocused"></sh-backdrop>
+  <img class="c-search-main_background" src="/assets/background.jpg">
 
   <div class="c-search-main__title">
     City Search
   </div>
 
-  <sh-form-field class="c-search-main__input">
-    <input
-      class="valami"
-      type="text"
-      shInput
-      [shTypeahead]="ahead"
-      (onInputValueChange)="onInputValueChange($event)"
-      (isFocused)="onFocusChange($event)">
-    <sh-typeahead
-      #ahead="shTypeahead"
-      [isActive]="isFocused">
-      <sh-list-element *ngFor="let searchResult of searchResults">
-        {{ searchResult }}
-      </sh-list-element>
-      <sh-spinner></sh-spinner>
-    </sh-typeahead>
-  </sh-form-field>
+  <cs-typeahead class="c-search-main__typeahead"></cs-typeahead>
 </div>

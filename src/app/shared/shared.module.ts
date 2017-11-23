@@ -6,7 +6,6 @@ import { ListElementComponent } from './components/list-element/list-element.com
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { TypeaheadComponent } from './components/typeahead/typeahead.component';
 import { FormFieldComponent } from './components/form-field/form-field.component';
-import { BackdropComponent } from './components/backdrop/backdrop.component';
 import { InputDirective } from './directives/input/input.directive';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { InputDirective } from './directives/input/input.directive';
     SpinnerComponent,
     TypeaheadComponent,
     FormFieldComponent,
-    BackdropComponent,
     InputDirective
   ],
   exports: [
@@ -27,7 +25,6 @@ import { InputDirective } from './directives/input/input.directive';
     SpinnerComponent,
     TypeaheadComponent,
     FormFieldComponent,
-    BackdropComponent,
     InputDirective
   ]
 })
