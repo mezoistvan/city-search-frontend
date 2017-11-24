@@ -3,19 +3,19 @@
     class="c-typeahead__input"
     type="text"
     placeholder="Start typing..."
-    [formControl]="inputValue"
+    [formControl]="inputFormControl"
     shInput
-    (isFocused)="onFocusChange($event)">
+    #typeaheadInput="shInput">
   <sh-spinner
     class="c-typeahead__spinner"
-    *ngIf="isSearchActive() && isFocused">
+    *ngIf="isSearchActive() && typeaheadInput.isFocused | async">
   </sh-spinner>
   <sh-typeahead
-    [isVisible]="isFocused">
+    [shInput]="typeaheadInput">
 
     <sh-list-element
       *ngFor="let searchResult of searchResults"
-      (mousedown)="setValue(searchResult.get(0))">
+      (mousedown)="inputFormControl.setValue(searchResult.get(0))">
       {{ searchResult.get(0) }}
       <span emphasis>{{ searchResult.get(1) }}</span>
     </sh-list-element>

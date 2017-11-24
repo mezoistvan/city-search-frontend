@@ -5,19 +5,25 @@
     align-items: center;
     flex-direction: column;
     height: 100%;
-    transition: background-color 3s;
-    background-color: $solid-blue;
 
-    &.after-load {
-        background-color: $transparent-blue;
-    }
+    background: url('/assets/background.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
-    .c-search-main_background {
-        z-index: -1;
+    .c-search-main__bg-color {
         position: absolute;
-        object-fit: cover;
+        left: 0px;
+        top: 0px;
         height: 100%;
         width: 100%;
+        transition: background-color 3s;
+        background-color: $solid-blue;
+
+        &.after-load {
+            background-color: $transparent-blue;
+        }
     }
 
     .c-search-main__title {
@@ -28,6 +34,7 @@
         font-size: 40px;
         text-align: center;
         color: $white;
+        z-index: 10;
     }
 
     .c-search-main__typeahead {

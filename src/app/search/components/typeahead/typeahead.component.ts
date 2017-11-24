@@ -17,15 +17,14 @@ export class SearchTypeaheadComponent implements OnInit, OnDestroy {
 
   public searchResults: Immutable.List<Array<string>> = Immutable.fromJS([]);
   public searchSubscription$: Subscription;
-  public inputValue = new FormControl();
-  public isFocused = false;
+  public inputFormControl = new FormControl();
 
   constructor(
     private cityService: CityService
   ) {}
 
   ngOnInit() {
-    this.inputValue.valueChanges
+    this.inputFormControl.valueChanges
       .debounceTime(500)
       .subscribe(text => {
         // if there is a request already in progress, discard it
@@ -47,14 +46,6 @@ export class SearchTypeaheadComponent implements OnInit, OnDestroy {
 
   handleSearchResult(result: Array<Array<string>>): void {
     this.searchResults = Immutable.fromJS(result);
-  }
-
-  setValue(searchResult: Array<string>): void {
-    this.inputValue.setValue(searchResult);
-  }
-
-  onFocusChange(isFocused: boolean): void {
-    this.isFocused = isFocused;
   }
 
   isSearchActive() {
