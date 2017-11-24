@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.scss']
 })
-export class FormFieldComponent {
+export class SharedFormFieldComponent {
 }

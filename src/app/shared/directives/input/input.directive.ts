@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
   selector: '[shInput]',
   exportAs: 'shInput'
 })
-export class InputDirective {
+export class SharedInputDirective {
 
   @Output() isFocused = new BehaviorSubject<boolean>(false);
 

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { SearchTypeaheadComponent } from './components/typeahead/typeahead.component';
 import { SearchMainComponent } from './components/search-main/search-main.component';
 import { SharedModule } from './../shared/shared.module';
-import { CityService } from './services/city.service';
+import { SearchCityService } from './services/city.service';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { CityService } from './services/city.service';
     SearchMainComponent
   ],
   providers: [
-    CityService
+    SearchCityService
   ],
   exports: [
     SearchMainComponent

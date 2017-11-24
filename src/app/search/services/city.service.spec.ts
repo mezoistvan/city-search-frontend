@@ -2,13 +2,13 @@ import { TestBed, inject } from '@angular/core/testing';
 import { XHRBackend, HttpModule, Http, RequestMethod, ResponseOptions, Response } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
-import { CityService } from './city.service';
+import { SearchCityService } from './city.service';
 
-describe('CityService', () => {
+describe('SearchCityService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        CityService,
+        SearchCityService,
         { provide: XHRBackend, useClass: MockBackend }
       ],
       imports: [
@@ -30,7 +30,7 @@ describe('CityService', () => {
         connection.mockRespond(response);
       });
 
-      const cityService = new CityService(http);
+      const cityService = new SearchCityService(http);
 
       cityService.searchCities(searchTerm);
     }));
@@ -45,7 +45,7 @@ describe('CityService', () => {
         connection.mockRespond(response);
       });
 
-      const cityService = new CityService(http);
+      const cityService = new SearchCityService(http);
 
       cityService.searchCities('Budapest').subscribe((mockResponse: Array<Array<string>>) => {
         expect(mockResponse).toEqual(serverResponse);

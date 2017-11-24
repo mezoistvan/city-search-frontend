@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './list-element.component.html',
   styleUrls: ['./list-element.component.scss']
 })
-export class ListElementComponent {
+export class SharedListElementComponent {
 }

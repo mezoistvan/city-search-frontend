@@ -2,9 +2,9 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { InputDirective } from './input.directive';
+import { SharedInputDirective } from './input.directive';
 
-describe('InputDirective', () => {
+describe('SharedInputDirective', () => {
 
   let component: TestInputDirectiveComponent;
   let fixture: ComponentFixture<TestInputDirectiveComponent>;
@@ -14,7 +14,7 @@ describe('InputDirective', () => {
     TestBed.configureTestingModule({
       declarations: [
         TestInputDirectiveComponent,
-        InputDirective
+        SharedInputDirective
       ]
     });
 

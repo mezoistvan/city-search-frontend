@@ -1,16 +1,18 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
-import { InputDirective } from './../../directives/input/input.directive';
+import { SharedInputDirective } from './../../directives/input/input.directive';
 
 @Component({
   selector: 'sh-typeahead',
   templateUrl: './typeahead.component.html',
   styleUrls: ['./typeahead.component.scss']
 })
-export class TypeaheadComponent implements OnInit, OnDestroy {
+export class SharedTypeaheadComponent implements OnInit, OnDestroy {
 
   public isVisible = false;
-  @Input() shInput: InputDirective;
+
+  // mandatory input
+  @Input() shInput: SharedInputDirective;
 
   constructor(
     private changeDetector: ChangeDetectorRef

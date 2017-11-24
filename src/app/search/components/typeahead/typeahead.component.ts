@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/debounceTime';
 import * as Immutable from 'immutable';
 
-import { CityService } from '../../services/city.service';
+import { SearchCityService } from '../../services/city.service';
 
 
 @Component({
@@ -16,15 +16,17 @@ import { CityService } from '../../services/city.service';
 export class SearchTypeaheadComponent implements OnInit, OnDestroy {
 
   public searchResults: Immutable.List<Array<string>> = Immutable.fromJS([]);
+  // this subscription is used to check if there are any requests in progress
   public searchSubscription$: Subscription;
   public inputFormControl = new FormControl();
+  public inputSubscription$: Subscription;
 
   constructor(
-    private cityService: CityService
+    public cityService: SearchCityService
   ) {}
 
   ngOnInit() {
-    this.inputFormControl.valueChanges
+    this.inputSubscription$ = this.inputFormControl.valueChanges
       .debounceTime(500)
       .subscribe(text => {
         // if there is a request already in progress, discard it
@@ -36,7 +38,7 @@ export class SearchTypeaheadComponent implements OnInit, OnDestroy {
           .subscribe(result => {
             this.handleSearchResult(result);
 
-            // after a successful request, discard the subscription
+            // after a successful response, discard the subscription
             this.searchSubscription$.unsubscribe();
           });
 
@@ -56,5 +58,6 @@ export class SearchTypeaheadComponent implements OnInit, OnDestroy {
     if (this.searchSubscription$) {
       this.searchSubscription$.unsubscribe();
     }
+    this.inputSubscription$.unsubscribe();
   }
 }
